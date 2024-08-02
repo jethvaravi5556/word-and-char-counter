@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word and Char Counter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h2 {
+            color: white;
+            background-color: #4a90e2;
+            margin:0;
+            width: 1260px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        textarea {
+            width: 80%;
+            height: 300px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            resize: none;
+            font-size: 16px;
+        }
+        .counter {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .counter span {
+            color: white;
+            background-color: #4a90e2;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Word and Char Counter</h2>
+    <textarea id="textbox" cols="70" rows="29"></textarea>
+    <h2 class="counter">
+        <span id="w">0</span> words and
+        <span id="c">0</span> characters
+    </h2>
+    <script>
+        var textbox = document.getElementById("textbox");
+        textbox.addEventListener("input", function() {
+            let text = textbox.value;
+            let char = text.length;
+            document.getElementById("c").innerHTML = char;
+
+            let trim = text.trim();
+            let word = trim.split(" ");
+            let cleanlist = word.filter(function(elm) {
+                return elm != "";
+            });
+            document.getElementById("w").innerHTML = cleanlist.length;
+        });
+    </script>
+</body>
+</html>
